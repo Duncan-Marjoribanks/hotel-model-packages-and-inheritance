@@ -1,12 +1,12 @@
 package enums;
 
-public enum bedroomType {
+public enum BedroomType {
     SINGLE(1),
     DOUBLE(2);
 
     private final int capacity;
 
-    bedroomType(int capacity){
+    BedroomType(int capacity){
         this.capacity = capacity;
     }
 
