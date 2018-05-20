@@ -33,5 +33,15 @@ public abstract class Room {
         return this.guestList.isEmpty();
     }
 
+    public abstract int getCapacity();
+
+    public boolean checkIfFull(){
+        if (this.countGuestsInRoom() >= this.getCapacity()){
+            return true;
+        }
+        return false;
+
+    }
+
 
 }

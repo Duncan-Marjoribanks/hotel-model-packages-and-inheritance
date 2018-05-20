@@ -1,14 +1,13 @@
 package hotel;
 
-import enums.BedroomType;
+
 import people.Guest;
 import rooms.Bedroom;
 import rooms.Room;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import static enums.BedroomType.DOUBLE;
-import static enums.BedroomType.SINGLE;
 
 public class Hotel {
 
@@ -27,11 +26,7 @@ public class Hotel {
         rooms.add(room);
     }
 
-    public void removeRoom(Room room){
-        rooms.remove(room);
-    }
-
-    public ArrayList<Room> getRooms() {
+    public ArrayList<Room> getRooms(){
         return rooms;
     }
 
@@ -39,8 +34,28 @@ public class Hotel {
         return rooms.size();
     }
 
+    public boolean checkIfRoomIsFull(Room room){
+        return room.checkIfFull();
+    }
+
+    public int howManyGuestsInRoom(Room room){
+        return room.countGuestsInRoom();
+    }
+
+    public List<Guest> retrieveGuestList(Room room){
+        return room.getGuestList();
+    }
+
     public void checkGuestIntoARoom(Room room, Guest guest){
-        room.addGuest(guest);
+
+        if (room.getGuestList().size() < room.getCapacity()) {
+
+
+            room.addGuest(guest);
+        }
+
+
+
     }
 
     public void checkGuestOutOfARoom(Room room, Guest guest){
@@ -56,21 +71,22 @@ public class Hotel {
         return vacantRooms;
     }
 
-    private boolean isRoomABedroom(Room room) {
-        if (room instanceof Bedroom) {
-            return true;
-        }
-        return false;
+    private boolean isRoomABedroom(Room room){
+        return room instanceof Bedroom;
     }
 
     public ArrayList <Room> listVacantBedrooms(){
         for (Room room : rooms){
             if (room.checkIsEmpty()){
-                if (isRoomABedroom(room) == true){
+                if (isRoomABedroom(room)){
                 vacantBedrooms.add(room);}
             }
         }
         return vacantBedrooms;
+    }
+
+    public boolean isRoomEmpty(Room room){
+        return room.checkIsEmpty();
     }
 
 
