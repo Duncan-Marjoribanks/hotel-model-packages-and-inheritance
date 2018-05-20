@@ -2,28 +2,33 @@ package rooms;
 
 import enums.DiningType;
 
-public class DiningRoom  extends Room{
+
+public class DiningRoom  extends Room {
 
     private String name;
     private DiningType type;
 
-    public DiningRoom(String name, DiningType type){
-        super(type.getCapacity());
+
+    public DiningRoom(String name, DiningType type) {
+        super();
         this.name = name;
         this.type = type;
     }
 
-    public DiningType getType(){
+    public DiningType getType() {
         return this.type;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public int getCapacity(){
+    public int getCapacity() {
         return this.type.getCapacity();
     }
 
 
+
 }
+
+

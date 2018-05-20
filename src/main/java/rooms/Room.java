@@ -1,22 +1,34 @@
 package rooms;
 
+import people.Guest;
+
 import java.util.ArrayList;
+
+import static java.lang.System.in;
 
 public abstract class Room {
 
-    private ArrayList <String> guestList;
-    private int capacity;
+    protected ArrayList<Guest> guestList;
 
-    public Room(int capacity) {
-        this.guestList = guestList;
-        this.capacity = capacity;
+    public Room() {
+        this.guestList = new ArrayList <>();
     }
 
-    public ArrayList <String> getGuestList() {
+    public ArrayList <Guest> getGuestList() {
         return guestList;
     }
 
-    public abstract int getCapacity();
+    public void addGuest(Guest guest){
+        this.guestList.add(guest);
+    }
+
+    public int countGuestsInRoom() {
+        return this.guestList.size();
+    }
+
+    public void removeGuest(Guest guest){
+        this.guestList.remove(guest);
+    }
 
 
 }

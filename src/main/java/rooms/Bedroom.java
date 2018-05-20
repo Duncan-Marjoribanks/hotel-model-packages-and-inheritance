@@ -2,6 +2,7 @@ package rooms;
 
 import enums.BedroomType;
 
+
 public class Bedroom extends Room{
 
     private int number;
@@ -9,7 +10,7 @@ public class Bedroom extends Room{
     private double roomRate;
 
     public Bedroom(int number, BedroomType type, double roomRate){
-        super(type.getCapacity());
+        super();
         this.number = number;
         this.type = type;
         this.roomRate = roomRate;
@@ -30,8 +31,6 @@ public class Bedroom extends Room{
     public double getRoomRate(){
         return this.roomRate;
     }
-
-
 
 
 }
