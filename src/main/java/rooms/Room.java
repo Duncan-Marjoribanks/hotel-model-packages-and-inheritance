@@ -4,7 +4,6 @@ import people.Guest;
 
 import java.util.ArrayList;
 
-import static java.lang.System.in;
 
 public abstract class Room {
 
@@ -28,6 +27,10 @@ public abstract class Room {
 
     public void removeGuest(Guest guest){
         this.guestList.remove(guest);
+    }
+
+    public boolean checkIsEmpty(){
+        return this.guestList.isEmpty();
     }
 
 
