@@ -3,6 +3,7 @@ package hotel;
 
 import people.Guest;
 import rooms.Bedroom;
+import rooms.ConferenceRoom;
 import rooms.Room;
 
 import java.util.ArrayList;
@@ -47,19 +48,19 @@ public class Hotel {
     }
 
     public void checkGuestIntoARoom(Room room, Guest guest){
-
-        if (room.getGuestList().size() < room.getCapacity()) {
-
-
-            room.addGuest(guest);
+        if (isRoomHireable(room)){
+            if (room.getGuestList().size() < room.getCapacity()){
+                    room.addGuest(guest);
+            }
         }
-
-
-
     }
 
     public void checkGuestOutOfARoom(Room room, Guest guest){
         room.removeGuest(guest);
+    }
+
+    public boolean isRoomEmpty(Room room){
+        return room.checkIsEmpty();
     }
 
     public ArrayList <Room> listVacantRooms(){
@@ -75,6 +76,14 @@ public class Hotel {
         return room instanceof Bedroom;
     }
 
+    private boolean isRoomAConferenceRoom(Room room){
+        return room instanceof ConferenceRoom;
+    }
+
+    public boolean isRoomHireable(Room room){
+        return (isRoomABedroom(room) || isRoomAConferenceRoom(room));
+    }
+
     public ArrayList <Room> listVacantBedrooms(){
         for (Room room : rooms){
             if (room.checkIsEmpty()){
@@ -85,10 +94,6 @@ public class Hotel {
         return vacantBedrooms;
     }
 
-    public boolean isRoomEmpty(Room room){
-        return room.checkIsEmpty();
-    }
-
-
+    
 }
 

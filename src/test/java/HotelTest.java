@@ -38,8 +38,8 @@ public class HotelTest {
         hotel1.addRoom(bedroom2);
         hotel1.addRoom(conferenceRoom);
         hotel1.addRoom(diningRoom);
-        guest1 = new Guest("Timmy");
-        guest2 = new Guest("Jenny");
+        guest1 = new Guest("Timmy", 100);
+        guest2 = new Guest("Jenny", 50);
     }
 
     @Test
@@ -107,6 +107,11 @@ public class HotelTest {
         hotel1.checkGuestIntoARoom(bedroom1, guest1);
         hotel2.addRoom(bedroom2);
         assertEquals(hotel1.listVacantBedrooms(), hotel2.getRooms());
+    }
+
+    @Test
+    public void canChackIfRoomIsHirable(){
+        assertEquals(true, hotel1.isRoomHireable(bedroom1));
     }
 
 
