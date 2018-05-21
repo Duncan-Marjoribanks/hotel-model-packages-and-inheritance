@@ -33,6 +33,10 @@ public abstract class Room {
         return this.guestList.isEmpty();
     }
 
+    public void clearRoom(){
+        this.guestList.clear();
+    }
+
     public abstract int getCapacity();
 
     public boolean checkIfFull(){

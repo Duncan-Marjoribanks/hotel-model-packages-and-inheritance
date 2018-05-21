@@ -55,12 +55,23 @@ public class Hotel {
         }
     }
 
+    public void checkGuestIntoABedoomAndChargeThem(Bedroom bedroom, Guest guest){
+        if (guest.getWallet() > bedroom.getRoomRate()){
+            guest.moneyLeavesWallet(bedroom.getRoomRate());
+            this.checkGuestIntoARoom(bedroom, guest);
+        }
+    }
+
     public void checkGuestOutOfARoom(Room room, Guest guest){
         room.removeGuest(guest);
     }
 
     public boolean isRoomEmpty(Room room){
         return room.checkIsEmpty();
+    }
+
+    public void emptyRoom(Room room){
+        room.clearRoom();
     }
 
     public ArrayList <Room> listVacantRooms(){

@@ -18,7 +18,7 @@ public class Guest {
         return this.wallet;
     }
 
-    public void moneyLeavesWallet(int amount){
+    public void moneyLeavesWallet(double amount){
         this.wallet -= amount;
     }
 

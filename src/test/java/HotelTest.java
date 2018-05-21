@@ -49,9 +49,27 @@ public class HotelTest {
     }
 
     @Test
+    public void canChackIfRoomIsHirable(){
+        assertEquals(true, hotel1.isRoomHireable(bedroom1));
+    }
+
+    @Test
     public void canCheckGuestIntoARoom(){
         hotel1.checkGuestIntoARoom(bedroom1, guest1);
         assertEquals(1, hotel1.howManyGuestsInRoom(bedroom1));
+    }
+
+    @Test
+    public void canCheckGuestIntoABedroomAndChargeThem(){
+        hotel1.checkGuestIntoABedoomAndChargeThem(bedroom1, guest1);
+        assertEquals(1, hotel1.howManyGuestsInRoom(bedroom1));
+        assertEquals(50.00, guest1.getWallet(), 0.01);
+    }
+
+    @Test
+    public void canCheckGuestIntoARoomIsNotHirable(){
+        hotel1.checkGuestIntoARoom(diningRoom, guest1);
+        assertEquals(0, hotel1.howManyGuestsInRoom(bedroom1));
     }
 
     @Test
@@ -69,6 +87,24 @@ public class HotelTest {
     }
 
     @Test
+    public void canCheckIfRoomIsEmpty(){
+        assertEquals(true, hotel1.isRoomEmpty(bedroom1));
+    }
+
+    @Test
+    public void canCheckIfRoomIsEmptyFail(){
+        hotel1.checkGuestIntoARoom(bedroom1, guest1);
+        assertEquals(false, hotel1.isRoomEmpty(bedroom1));
+    }
+
+    @Test
+    public void canEmptyARoom(){
+        hotel1.checkGuestIntoARoom(bedroom1, guest1);
+        hotel1.emptyRoom(bedroom1);
+        assertEquals(true, hotel1.isRoomEmpty(bedroom1));
+    }
+
+    @Test
     public void canListGuestsStayingInARoom(){
         hotel1.checkGuestIntoARoom(bedroom1, guest1);
         hotel1.checkGuestIntoARoom(bedroom1, guest2);
@@ -77,20 +113,9 @@ public class HotelTest {
     }
 
     @Test
-    public void canCheckIfRoomIsEmpty(){
-        assertEquals(true, hotel1.isRoomEmpty(bedroom1));
-    }
-
-    @Test
     public void canCheckIfRoomIsFull(){
         hotel1.checkGuestIntoARoom(bedroom1, guest1);
         assertEquals(true, hotel1.checkIfRoomIsFull(bedroom1));
-    }
-
-    @Test
-    public void canCheckIfRoomIsEmptyFail(){
-        hotel1.checkGuestIntoARoom(bedroom1, guest1);
-        assertEquals(false, hotel1.isRoomEmpty(bedroom1));
     }
 
     @Test
@@ -107,11 +132,6 @@ public class HotelTest {
         hotel1.checkGuestIntoARoom(bedroom1, guest1);
         hotel2.addRoom(bedroom2);
         assertEquals(hotel1.listVacantBedrooms(), hotel2.getRooms());
-    }
-
-    @Test
-    public void canChackIfRoomIsHirable(){
-        assertEquals(true, hotel1.isRoomHireable(bedroom1));
     }
 
 
