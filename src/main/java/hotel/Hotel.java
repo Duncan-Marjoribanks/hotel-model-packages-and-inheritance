@@ -62,6 +62,14 @@ public class Hotel {
         }
     }
 
+    public void bookConference(ConferenceRoom conferenceRoom, Guest guest){
+        if (guest.getWallet() > conferenceRoom.getRoomRate()){
+            guest.moneyLeavesWallet(conferenceRoom.getRoomRate());
+            this.checkGuestIntoARoom(conferenceRoom, guest);
+        }
+        // I would like to change this to take a time, date and number of guests if I had time
+    }
+
     public void checkGuestOutOfARoom(Room room, Guest guest){
         room.removeGuest(guest);
     }

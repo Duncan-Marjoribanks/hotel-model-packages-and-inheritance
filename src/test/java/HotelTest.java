@@ -31,7 +31,7 @@ public class HotelTest {
         bedroom2 = new Bedroom(200, BedroomType.DOUBLE, 90.00);
         bedroom3 = new Bedroom(300, BedroomType.DOUBLE, 90.00);
         conferenceRoom = new ConferenceRoom("The Conference Room", ConferenceType.SMALL, 50.00);
-        diningRoom = new DiningRoom("The Grand Room", DiningType.RESTAURANT);
+        diningRoom = new DiningRoom("The Dining Room", DiningType.RESTAURANT);
         hotel1 = new Hotel();
         hotel2 = new Hotel();
         hotel1.addRoom(bedroom1);
@@ -64,6 +64,12 @@ public class HotelTest {
         hotel1.checkGuestIntoABedoomAndChargeThem(bedroom1, guest1);
         assertEquals(1, hotel1.howManyGuestsInRoom(bedroom1));
         assertEquals(50.00, guest1.getWallet(), 0.01);
+    }
+
+    @Test
+    public void canBookConference(){
+        hotel1.bookConference(conferenceRoom, guest1);
+        assertEquals(false, hotel1.isRoomEmpty(conferenceRoom));
     }
 
     @Test
